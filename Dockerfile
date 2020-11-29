@@ -1,3 +1,6 @@
+# Based on 
+# https://github.com/svenihoney/docker-wetty-alpine
+
 FROM node:carbon-alpine as builder
 RUN apk add -U build-base python git
 WORKDIR /app
