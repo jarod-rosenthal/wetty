@@ -6,7 +6,7 @@ fi
 
 if [ "x${REMOTE_SSH_SERVER}" == "x" ]; then
   # Login mode, no SSH_SERVER
-  npm start -- -p ${WETTY_PORT}
+  npm start -- -p ${WETTY_PORT} --bypasshelmet
 else
   # SSH connect mode
   #
@@ -14,7 +14,7 @@ else
   mkdir ~/.ssh && \
   ssh-keyscan -H -p ${REMOTE_SSH_PORT} ${REMOTE_SSH_SERVER} > ~/.ssh/known_hosts
 
-  cmd="npm start -- -p ${WETTY_PORT} --sshhost ${REMOTE_SSH_SERVER} --sshport ${REMOTE_SSH_PORT} --base ${BASE}" 
+  cmd="npm start -- -p ${WETTY_PORT} --sshhost ${REMOTE_SSH_SERVER} --sshport ${REMOTE_SSH_PORT} --base ${BASE} --bypasshelmet" 
   if ! [ "x${REMOTE_SSH_USER}" == "x" ]; then
     cmd="${cmd} --sshuser ${REMOTE_SSH_USER}"
   fi
